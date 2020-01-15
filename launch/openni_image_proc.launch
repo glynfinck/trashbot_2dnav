@@ -1,0 +1,20 @@
+<launch>
+    <arg name="depth_topic" value="/camera/depth/image_rect_raw"/>
+    <arg name="camera_info" value="/camera/depth/camera_info"/>
+
+
+    <!-- Realsense Camera
+    <include
+        file="$(find realsense2_camera)/launch/rs_camera.launch">
+        <arg name="align_depth" value="true"/>
+        <arg name="unite_imu_method" value="linear_interpolation"/>
+    </include> -->
+
+    <node pkg="nodelet" type="nodelet" name="standalone_nodelet"  args="manager"/>
+    <node pkg="nodelet" type="nodelet" name="depth_image_proc"
+            args="load depth_image_proc/point_cloud_xyz standalone_nodelet">
+        <remap from="camera_info" to="/camera/depth/camera_info"/>
+        <remap from="image_rect" to="/camera/depth/image_rect_raw"/>
+    </node>
+    
+</launch>

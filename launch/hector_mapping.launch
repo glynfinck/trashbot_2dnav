@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+
+    <node name="hector_mapping" pkg="hector_mapping" type="hector_mapping" output="screen">
+       <param name="pub_map_odom_transform" type="bool" value="false" />
+       <param name="pub_map_scanmatch_transform " type="bool" value="false" />
+    </node>
+
+</launch>

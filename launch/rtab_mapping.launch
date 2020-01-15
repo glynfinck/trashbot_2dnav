@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="rtabmap" pkg="rtabmap_ros" type="rtabmap">
+        <param name="subscribe_scan" type="bool" value="true"/>
+        <param name="subscribe_depth" type="bool" value="false"/>
+        <param name="subscribe_stereo" type="bool" value="false"/>
+        <param name="subscribe_scan_cloud" type="bool" value="false"/>
+        
+        <param name="odom_frame_id" type="string" value="odom"/>
+        <param name="database_path" type="string" value=""/>    
+
+        <remap from="/rgb/image" to="/camera/color/image_raw"/>
+        <remap from="/rgb/camera_info" to="/camera/color/camera_info"/>
+    </node>
+</launch>
