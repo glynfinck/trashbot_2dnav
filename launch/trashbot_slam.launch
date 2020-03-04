@@ -35,7 +35,7 @@
 
      <!-- RTAB Map Node -->
      <!-- SLAM -->
-     <group if="!$(arg localization)">
+     <group if="$(eval arg('localization') == false)">
         <include file="$(find rtabmap_ros)/launch/rtabmap.launch">
             <arg name="args" value="--delete_db_on_start --Optimizer/GravitySigma 0.3 --Reg/Force3DoF --Optimizer/Slam2D --Rtabmap/StartNewMapOnLoopClosure --Odom/ResetCountdown 1" />
             <arg name="rgb_topic" value="/camera/color/image_raw"/> 
@@ -48,7 +48,7 @@
             <arg name="imu_topic" value="/rtabmap/imu"/>
         </include>
     </group>
-    <group if="$(arg localization)">
+    <group if="$(eval arg('localization') == true)">
         <include file="$(find rtabmap_ros)/launch/rtabmap.launch">
             <arg name="args" value="--Optimizer/GravitySigma 0.3 --Reg/Force3DoF --Optimizer/Slam2D --Rtabmap/StartNewMapOnLoopClosure --Odom/ResetCountdown 1" />
             <arg name="localization" value="true" />
