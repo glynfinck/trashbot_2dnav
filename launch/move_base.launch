@@ -11,14 +11,17 @@
     <remap from="map" to="/rtabmap/grid_map"/>
   </node> -->
 
-  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-    <rosparam file="$(find mobile_robot_2dnav)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find mobile_robot_2dnav)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
-    <rosparam file="$(find mobile_robot_2dnav)/param/local_costmap_params.yaml" command="load" />
-    <rosparam file="$(find mobile_robot_2dnav)/param/global_costmap_params.yaml" command="load" />
-    <rosparam file="$(find mobile_robot_2dnav)/param/base_local_planner_params.yaml" command="load" />
+  <node pkg="move_base" type="move_base" respawn="true" name="move_base" output="screen">
+    <rosparam file="$(find trashbot_2dnav)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find trashbot_2dnav)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find trashbot_2dnav)/param/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find trashbot_2dnav)/param/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find trashbot_2dnav)/param/base_local_planner_params.yaml" command="load" />
 
-    <remap from="scan" to="scan"/>
-    <remap from="map" to="rtabmap/grid_map"/>
+    <remap from="scan" to="/scan"/>
+    <remap from="map" to="/rtabmap/grid_map"/>
+    <remap from="odom" to="/rtabmap/odom"/>
+    <remap from="global_pose" to="/rtabmap/global_pose"/>
   </node>
+
 </launch>
