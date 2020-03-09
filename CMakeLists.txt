@@ -6,8 +6,6 @@ project(trashbot_2dnav)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   depthimage_to_laserscan
-  mobile_robot_odom
-  mobile_robot_setup_tf
   move_base
 )
 
